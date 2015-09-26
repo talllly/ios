@@ -16,22 +16,8 @@
                     <view key="view" contentMode="scaleToFill" id="8bC-Xf-vdC">
                         <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
-                        <subviews>
-                            <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="qVl-k9-IY5">
-                                <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
-                            </imageView>
-                        </subviews>
-                        <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
-                        <constraints>
-                            <constraint firstItem="qVl-k9-IY5" firstAttribute="bottom" secondItem="wfy-db-euE" secondAttribute="top" id="IIH-Ot-OL5"/>
-                            <constraint firstAttribute="trailing" secondItem="qVl-k9-IY5" secondAttribute="trailing" id="QtL-Dh-X8k"/>
-                            <constraint firstItem="qVl-k9-IY5" firstAttribute="top" secondItem="8bC-Xf-vdC" secondAttribute="top" id="TXE-Mv-nNf"/>
-                            <constraint firstItem="qVl-k9-IY5" firstAttribute="leading" secondItem="8bC-Xf-vdC" secondAttribute="leading" id="dDl-wF-WAa"/>
-                        </constraints>
+                        <color key="backgroundColor" white="0.66666666666666663" alpha="1" colorSpace="calibratedWhite"/>
                     </view>
-                    <connections>
-                        <outlet property="imageView" destination="qVl-k9-IY5" id="6OF-3B-HYe"/>
-                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="dkx-z0-nzr" sceneMemberID="firstResponder"/>
             </objects>

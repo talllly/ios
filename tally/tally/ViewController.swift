@@ -8,16 +8,23 @@
 
 import UIKit
 import AVFoundation
+import MobileCoreServices
 
-class ViewController: UIViewController {
+class ViewController: UIViewController,
+UINavigationControllerDelegate, UIImagePickerControllerDelegate {
     
     let captureSession = AVCaptureSession()
     var previewLayer: AVCaptureVideoPreviewLayer?
     let screenWidth = UIScreen.mainScreen().bounds.size.width
+    var CVImage: UIImage?
     
     @IBOutlet var imageView: UIImageView!
     
     var backCam: AVCaptureDevice?
+    
+    var loadedBefore = false
+    
+    var imagePickerController: UIImagePickerController?
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -36,85 +43,73 @@ class ViewController: UIViewController {
                 }
             }
         }
-        
-        if backCam != nil {
-            beginSession()
-        }
     }
     
-    func beginSession() {
-        configureCamera()
-        do {
-            try captureSession.addInput(AVCaptureDeviceInput(device: backCam))
-        } catch let error as NSError {
-            print("error: \(error.localizedDescription)")
+    override func viewDidAppear(animated: Bool) {
+        super.viewDidAppear(animated)
+        
+        if loadedBefore {
+            return;
+        } else {
+            loadedBefore = true
         }
         
-        previewLayer = AVCaptureVideoPreviewLayer(session: captureSession)
-        self.view.layer.addSublayer(previewLayer!)
-        previewLayer?.frame = self.view.layer.frame
-        captureSession.startRunning()
-    }
-    
-    func configureCamera() {
-        if let cam = backCam {
-            do {
-                try cam.lockForConfiguration()
-            } catch let error as NSError {
-                print("error: \(error.localizedDescription)")
-            }
-            cam.focusMode = .Locked
-            cam.unlockForConfiguration()
+        imagePickerController = UIImagePickerController()
+        
+        if let thisController = imagePickerController {
+            thisController.sourceType = .Camera
+            
+            thisController.mediaTypes = [kUTTypeImage as String]
+            
+            thisController.allowsEditing = true
+            thisController.delegate = self
+            presentViewController(thisController, animated: true, completion: nil)
         }
     }
     
-//    func focusTo(value: Float) {
-//        if let cam = backCam {
-//            do {
-//                try cam.lockForConfiguration()
-////                cam.setFocusModeLockedWithLensPosition(value, completionHandler: { (time) -> Void in
-////                    //
-////                })
-//                currentDevice.focusPointOfInterest = tap.locationInView(self)
-//                cam.unlockForConfiguration()
-//            } catch let error as NSError {
-//                print("error: \(error.localizedDescription)")
-//            }
-//        }
-//    }
+    func imagePickerControllerDidCancel(picker: UIImagePickerController) {
+        print("Picker was cancelled")
+        //picker.dismissViewControllerAnimated(true, completion: nil)
+    }
     
-    override func touchesBegan(touches: Set<UITouch>, withEvent event: UIEvent?) {
-        let aTouch = touches.first as UITouch?
-        //let touchPercent = aTouch!.locationInView(self.view).x / screenWidth
-        if let cam = backCam {
-            do {
-                try cam.lockForConfiguration()
-                //                cam.setFocusModeLockedWithLensPosition(value, completionHandler: { (time) -> Void in
-                //                    //
-                //                })
-                cam.focusPointOfInterest = aTouch!.locationInView(self.view)
-                cam.focusMode = AVCaptureFocusMode.AutoFocus
-                cam.unlockForConfiguration()
-            } catch let error as NSError {
-                print("error: \(error.localizedDescription)")
+    
+    func imagePickerController(picker: UIImagePickerController,
+        didFinishPickingMediaWithInfo info: [String: AnyObject]){
+            
+            print("Picker returned successfully")
+            
+            let mediaType:AnyObject? = info[UIImagePickerControllerMediaType]
+            
+            if let type:AnyObject = mediaType{
+                
+                if type is String{
+                    let stringType = type as! String
+                    
+                    if stringType == kUTTypeMovie as String{
+                        let urlOfVideo = info[UIImagePickerControllerMediaURL] as? NSURL
+                        if let url = urlOfVideo{
+                            print("Video URL = \(url)")
+                        }
+                    }
+                        
+                    else if stringType == kUTTypeImage as String{
+                        /* Let's get the metadata. This is only for images. Not videos */
+                        let metadata = info[UIImagePickerControllerMediaMetadata]
+                            as? NSDictionary
+                        if let theMetaData = metadata{
+                            let image = info[UIImagePickerControllerOriginalImage]
+                                as? UIImage
+                            if let theImage = image {
+                                CVImage = theImage
+                                print("Image Metadata = \(theMetaData)")
+                                print("Image = \(theImage)")
+                            }
+                        }
+                    }
+                    
+                }
             }
-        }
-        //focusTo(Float(touchPercent))
-        print("touched\n")
+            
+            picker.dismissViewControllerAnimated(true, completion: nil)
     }
-    
-//    override func touchesMoved(touches: Set<UITouch>, withEvent event: UIEvent?) {
-//        let aTouch = touches.first as UITouch?
-//        let touchPercent = (aTouch?.locationInView(self.view).x)! / screenWidth
-//        focusTo(Float(touchPercent))
-//        print("moved\n")
-//    }
-    
-
-    override func didReceiveMemoryWarning() {
-        super.didReceiveMemoryWarning()
-        // Dispose of any resources that can be recreated.
-    }
-    
-    
 }
