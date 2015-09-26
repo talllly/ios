@@ -13,6 +13,9 @@ class ViewController: UIViewController {
     
     let captureSession = AVCaptureSession()
     var previewLayer: AVCaptureVideoPreviewLayer?
+    let screenWidth = UIScreen.mainScreen().bounds.size.width
+    
+    @IBOutlet var imageView: UIImageView!
     
     var backCam: AVCaptureDevice?
     
@@ -40,6 +43,7 @@ class ViewController: UIViewController {
     }
     
     func beginSession() {
+        configureCamera()
         do {
             try captureSession.addInput(AVCaptureDeviceInput(device: backCam))
         } catch let error as NSError {
@@ -51,6 +55,61 @@ class ViewController: UIViewController {
         previewLayer?.frame = self.view.layer.frame
         captureSession.startRunning()
     }
+    
+    func configureCamera() {
+        if let cam = backCam {
+            do {
+                try cam.lockForConfiguration()
+            } catch let error as NSError {
+                print("error: \(error.localizedDescription)")
+            }
+            cam.focusMode = .Locked
+            cam.unlockForConfiguration()
+        }
+    }
+    
+//    func focusTo(value: Float) {
+//        if let cam = backCam {
+//            do {
+//                try cam.lockForConfiguration()
+////                cam.setFocusModeLockedWithLensPosition(value, completionHandler: { (time) -> Void in
+////                    //
+////                })
+//                currentDevice.focusPointOfInterest = tap.locationInView(self)
+//                cam.unlockForConfiguration()
+//            } catch let error as NSError {
+//                print("error: \(error.localizedDescription)")
+//            }
+//        }
+//    }
+    
+    override func touchesBegan(touches: Set<UITouch>, withEvent event: UIEvent?) {
+        let aTouch = touches.first as UITouch?
+        //let touchPercent = aTouch!.locationInView(self.view).x / screenWidth
+        if let cam = backCam {
+            do {
+                try cam.lockForConfiguration()
+                //                cam.setFocusModeLockedWithLensPosition(value, completionHandler: { (time) -> Void in
+                //                    //
+                //                })
+                cam.focusPointOfInterest = aTouch!.locationInView(self.view)
+                cam.focusMode = AVCaptureFocusMode.AutoFocus
+                cam.unlockForConfiguration()
+            } catch let error as NSError {
+                print("error: \(error.localizedDescription)")
+            }
+        }
+        //focusTo(Float(touchPercent))
+        print("touched\n")
+    }
+    
+//    override func touchesMoved(touches: Set<UITouch>, withEvent event: UIEvent?) {
+//        let aTouch = touches.first as UITouch?
+//        let touchPercent = (aTouch?.locationInView(self.view).x)! / screenWidth
+//        focusTo(Float(touchPercent))
+//        print("moved\n")
+//    }
+    
 
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()

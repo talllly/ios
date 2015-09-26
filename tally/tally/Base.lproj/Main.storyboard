@@ -1,8 +1,8 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
 <document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="8191" systemVersion="14F27" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" initialViewController="BYZ-38-t0r">
     <dependencies>
+        <deployment identifier="iOS"/>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="8154"/>
-        <capability name="Constraints to layout margins" minToolsVersion="6.0"/>
     </dependencies>
     <scenes>
         <!--View Controller-->
@@ -18,20 +18,24 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="qVl-k9-IY5">
-                                <rect key="frame" x="0.0" y="0.0" width="622" height="600"/>
+                                <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
                             </imageView>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
                         <constraints>
-                            <constraint firstItem="qVl-k9-IY5" firstAttribute="top" secondItem="8bC-Xf-vdC" secondAttribute="top" id="IKI-rg-O05"/>
-                            <constraint firstItem="qVl-k9-IY5" firstAttribute="bottom" secondItem="wfy-db-euE" secondAttribute="top" id="WOj-FQ-56e"/>
-                            <constraint firstAttribute="trailingMargin" secondItem="qVl-k9-IY5" secondAttribute="trailing" constant="-42" id="itZ-L6-NhQ"/>
-                            <constraint firstItem="qVl-k9-IY5" firstAttribute="leading" secondItem="8bC-Xf-vdC" secondAttribute="leading" id="rqL-dw-YYz"/>
+                            <constraint firstItem="qVl-k9-IY5" firstAttribute="bottom" secondItem="wfy-db-euE" secondAttribute="top" id="IIH-Ot-OL5"/>
+                            <constraint firstAttribute="trailing" secondItem="qVl-k9-IY5" secondAttribute="trailing" id="QtL-Dh-X8k"/>
+                            <constraint firstItem="qVl-k9-IY5" firstAttribute="top" secondItem="8bC-Xf-vdC" secondAttribute="top" id="TXE-Mv-nNf"/>
+                            <constraint firstItem="qVl-k9-IY5" firstAttribute="leading" secondItem="8bC-Xf-vdC" secondAttribute="leading" id="dDl-wF-WAa"/>
                         </constraints>
                     </view>
+                    <connections>
+                        <outlet property="imageView" destination="qVl-k9-IY5" id="6OF-3B-HYe"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="dkx-z0-nzr" sceneMemberID="firstResponder"/>
             </objects>
+            <point key="canvasLocation" x="139" y="315"/>
         </scene>
     </scenes>
 </document>
