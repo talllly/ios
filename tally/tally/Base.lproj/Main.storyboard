@@ -3,6 +3,8 @@
     <dependencies>
         <deployment identifier="iOS"/>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="8154"/>
+        <capability name="Aspect ratio constraints" minToolsVersion="5.1"/>
+        <capability name="Constraints to layout margins" minToolsVersion="6.0"/>
     </dependencies>
     <scenes>
         <!--View Controller-->
@@ -16,7 +18,28 @@
                     <view key="view" contentMode="scaleToFill" id="8bC-Xf-vdC">
                         <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
-                        <color key="backgroundColor" white="0.66666666666666663" alpha="1" colorSpace="calibratedWhite"/>
+                        <subviews>
+                            <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="tally" translatesAutoresizingMaskIntoConstraints="NO" id="LJZ-O1-Wth">
+                                <rect key="frame" x="15" y="147" width="570" height="305"/>
+                                <color key="backgroundColor" red="0.8901960784313725" green="0.8901960784313725" blue="0.8901960784313725" alpha="1" colorSpace="calibratedRGB"/>
+                                <constraints>
+                                    <constraint firstAttribute="width" secondItem="LJZ-O1-Wth" secondAttribute="height" multiplier="114:61" id="0KY-Qf-7fC"/>
+                                    <constraint firstAttribute="width" secondItem="LJZ-O1-Wth" secondAttribute="height" multiplier="114:61" id="T63-94-iO6"/>
+                                </constraints>
+                                <variation key="default">
+                                    <mask key="constraints">
+                                        <exclude reference="0KY-Qf-7fC"/>
+                                    </mask>
+                                </variation>
+                            </imageView>
+                        </subviews>
+                        <color key="backgroundColor" red="0.8901960784313725" green="0.8901960784313725" blue="0.8901960784313725" alpha="1" colorSpace="calibratedRGB"/>
+                        <constraints>
+                            <constraint firstAttribute="trailingMargin" secondItem="LJZ-O1-Wth" secondAttribute="trailing" constant="-5" id="ZA2-vK-G8n"/>
+                            <constraint firstItem="LJZ-O1-Wth" firstAttribute="centerX" secondItem="8bC-Xf-vdC" secondAttribute="centerX" id="lyb-ua-1Ib"/>
+                            <constraint firstItem="LJZ-O1-Wth" firstAttribute="centerY" secondItem="8bC-Xf-vdC" secondAttribute="centerY" id="r8U-Us-mAr"/>
+                            <constraint firstItem="LJZ-O1-Wth" firstAttribute="leading" secondItem="8bC-Xf-vdC" secondAttribute="leadingMargin" constant="-5" id="sdY-bU-g3E"/>
+                        </constraints>
                     </view>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="dkx-z0-nzr" sceneMemberID="firstResponder"/>
@@ -24,4 +47,7 @@
             <point key="canvasLocation" x="139" y="315"/>
         </scene>
     </scenes>
+    <resources>
+        <image name="tally" width="1535" height="1030"/>
+    </resources>
 </document>

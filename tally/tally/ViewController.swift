@@ -72,6 +72,11 @@ UINavigationControllerDelegate, UIImagePickerControllerDelegate {
         //picker.dismissViewControllerAnimated(true, completion: nil)
     }
     
+//    func runComputerVision() {
+//        // Called directly after CVImage is set
+//        // cvMatFromUIImage(&CVImage)
+//        
+//    }
     
     func imagePickerController(picker: UIImagePickerController,
         didFinishPickingMediaWithInfo info: [String: AnyObject]){
@@ -103,6 +108,7 @@ UINavigationControllerDelegate, UIImagePickerControllerDelegate {
                                 CVImage = theImage
                                 print("Image Metadata = \(theMetaData)")
                                 print("Image = \(theImage)")
+                                //runComputerVision()
                             }
                         }
                     }
