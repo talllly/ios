@@ -51,12 +51,11 @@ class ViewController: UIViewController {
         previewLayer?.frame = self.view.layer.frame
         captureSession.startRunning()
     }
-
+    
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
         // Dispose of any resources that can be recreated.
     }
-
-
+    
+    
 }
-
