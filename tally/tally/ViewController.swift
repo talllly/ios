@@ -18,9 +18,8 @@ UINavigationControllerDelegate, UIImagePickerControllerDelegate {
     let screenWidth = UIScreen.mainScreen().bounds.size.width
     var CVImage: UIImage?
     
-    @IBOutlet var imageView: UIImageView!
-    
     var backCam: AVCaptureDevice?
+    @IBOutlet var imageView: UIImageView!
     
     var loadedBefore = false
     
@@ -72,11 +71,6 @@ UINavigationControllerDelegate, UIImagePickerControllerDelegate {
         //picker.dismissViewControllerAnimated(true, completion: nil)
     }
     
-//    func runComputerVision() {
-//        // Called directly after CVImage is set
-//        // cvMatFromUIImage(&CVImage)
-//        
-//    }
     
     func imagePickerController(picker: UIImagePickerController,
         didFinishPickingMediaWithInfo info: [String: AnyObject]){
@@ -98,24 +92,19 @@ UINavigationControllerDelegate, UIImagePickerControllerDelegate {
                     }
                         
                     else if stringType == kUTTypeImage as String{
-                        /* Let's get the metadata. This is only for images. Not videos */
-                        let metadata = info[UIImagePickerControllerMediaMetadata]
-                            as? NSDictionary
-                        if let theMetaData = metadata{
-                            let image = info[UIImagePickerControllerOriginalImage]
-                                as? UIImage
-                            if let theImage = image {
-                                CVImage = theImage
-                                print("Image Metadata = \(theMetaData)")
-                                print("Image = \(theImage)")
-                                //runComputerVision()
-                            }
-                        }
+                        let image = info[UIImagePickerControllerOriginalImage] as! UIImage
+                        
+                        let cvImage:UIImage = CVWrapper.processImageWithOpenCV(image)
+                        
+                        print("Image = \(cvImage)")
+                        imageView.image = cvImage
+                        let numFaces = CVWrapper.howManyFaces(image)
+                        print("THERE ARE: \(numFaces) faces")
                     }
                     
                 }
-            }
             
-            picker.dismissViewControllerAnimated(true, completion: nil)
+                picker.dismissViewControllerAnimated(true, completion: nil)
+            }
     }
 }

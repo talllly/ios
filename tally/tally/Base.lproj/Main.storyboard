@@ -24,11 +24,13 @@
                                 <color key="backgroundColor" red="0.8901960784313725" green="0.8901960784313725" blue="0.8901960784313725" alpha="1" colorSpace="calibratedRGB"/>
                                 <constraints>
                                     <constraint firstAttribute="width" secondItem="LJZ-O1-Wth" secondAttribute="height" multiplier="114:61" id="0KY-Qf-7fC"/>
+                                    <constraint firstAttribute="width" secondItem="LJZ-O1-Wth" secondAttribute="height" multiplier="114:61" id="68v-Ax-G1X"/>
                                     <constraint firstAttribute="width" secondItem="LJZ-O1-Wth" secondAttribute="height" multiplier="114:61" id="T63-94-iO6"/>
                                 </constraints>
                                 <variation key="default">
                                     <mask key="constraints">
                                         <exclude reference="0KY-Qf-7fC"/>
+                                        <exclude reference="T63-94-iO6"/>
                                     </mask>
                                 </variation>
                             </imageView>
@@ -41,6 +43,9 @@
                             <constraint firstItem="LJZ-O1-Wth" firstAttribute="leading" secondItem="8bC-Xf-vdC" secondAttribute="leadingMargin" constant="-5" id="sdY-bU-g3E"/>
                         </constraints>
                     </view>
+                    <connections>
+                        <outlet property="imageView" destination="LJZ-O1-Wth" id="WoG-tO-a3M"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="dkx-z0-nzr" sceneMemberID="firstResponder"/>
             </objects>
