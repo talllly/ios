@@ -15,6 +15,7 @@
 //  http://docs.opencv.org/doc/tutorials/ios/image_manipulation/image_manipulation.html#opencviosimagemanipulation
 
 #import "UIImage+OpenCV.h"
+#import "MacTypes.h"
 #include <string>
 #include <opencv2/opencv.hpp>
 
@@ -52,33 +53,31 @@
 
 }
 
--(int)CVCountFaces
+-(UIImage *)CVCountFaces
 {
     
     //Location of the classifiers of faces
     //REPLACE IT WITH THE APROPRIATE PATH
-    std::string faceCascadeName = "lbpcascade_frontalface.xml";
-    
     //Create the classifiers
     cv::CascadeClassifier faceCascade;
-    
-    //Load the classifiers
-    
-    NSURL *filepath = [[NSBundle mainBundle] URLForResource:@"lbpcascade_frontalface" withExtension:@"xml"];
-    if (!faceCascade.load( std::string([filepath fileSystemRepresentation]) ))
-    {
-        std::cerr << "Could not load face classifier" << std::endl;
-        return -1;
-    }
-    
     
     //The captured frame
     cv::Mat frame = [self CVMat];
     if(frame.empty())
     {
-        std::cerr << "Could not load image " << std::endl;
-        return -1;
+        std::cerr << "Could not load image" << std::endl;
+        return self;
     }
+    
+    //Load the classifiers
+    
+    NSURL *filepath = [[NSBundle mainBundle] URLForResource:@"haarcascade_frontalface_alt2" withExtension:@"xml"];
+    if (!faceCascade.load( std::string([filepath fileSystemRepresentation]) ))
+    {
+        std::cerr << "Could not load face classifier" << std::endl;
+        return self;
+    }
+    
     
     //This will contain the output of the face detector
     std::vector<cv::Rect> faces;
@@ -89,31 +88,16 @@
     cv::equalizeHist( frameGray, frameGray );
     
     //Detect the face
-    faceCascade.detectMultiScale( frameGray, faces, 1.1, 2, 0, cv::Size(80,80));
-
+    faceCascade.detectMultiScale( frameGray, faces, 1.1, 2, 0, cv::Size(20,20), cv::Size(1000,1000));
     
-    //Number of detected faces was greater than 0.
-    return faces.size();
-}
-
--(UIImage *)CVGrayscaleMat
-{
-    // image is an instance of UIImage class that we will convert to grayscale
-    
-    CGFloat actualWidth = self.size.height;
-    CGFloat actualHeight = self.size.width;
-    
-    CGRect imageRect = CGRectMake(0, 0, actualWidth, actualHeight);
-    CGColorSpaceRef colorSpace = CGColorSpaceCreateDeviceGray();
-    
-    CGContextRef context = CGBitmapContextCreate(nil, actualWidth, actualHeight, 8, 0, colorSpace, kCGImageAlphaNone);
-    CGContextDrawImage(context, imageRect, self.CGImage);
-    
-    CGImageRef grayImage = CGBitmapContextCreateImage(context);
-    CGColorSpaceRelease(colorSpace);
-    CGContextRelease(context);
-    
-    return [self initWithCGImage:grayImage];
+//    //Draw circles around each face
+//    for( int i = 0; i < faces.size(); i++ )
+//    {
+//        Point center = 2( faces[i].x + faces[i].width*0.5, faces[i].y + faces[i].height*0.5 );
+//        ellipse( image, center, Size( faces[i].width*0.5, faces[i].height*0.5), 0, 0, 360, Scalar( 255, 0, 255 ), 4, 8, 0 );
+//    }
+    std::cerr << "I found " << faces.size() << " faces." << std::endl;
+    return self;
 }
 
 + (UIImage *)imageWithCVMat:(const cv::Mat&)cvMat

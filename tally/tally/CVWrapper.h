@@ -11,7 +11,6 @@
 
 @interface CVWrapper : NSObject
 
-+ (UIImage*) processImageWithOpenCV: (UIImage*) inputImage;
 + (int) howManyFaces: (UIImage*) inputImage;
 
 

@@ -12,27 +12,13 @@
 
 @implementation CVWrapper
 
-+ (UIImage*) processImageWithOpenCV: (UIImage*) inputImage
-{
-    UIImage* result = nil;
-    
-    if ([inputImage isKindOfClass: [UIImage class]]) {
-        UIImage *matImage = [inputImage CVGrayscaleMat];
-        NSLog (@"matImage: %@", inputImage);
-        
-        result =  matImage;
-    }
-    
-    return result;
-}
-
-+ (int) howManyFaces: (UIImage*) inputImage
++ (UIImage *) howManyFaces: (UIImage*) inputImage
 {
     if ([inputImage isKindOfClass: [UIImage class]]) {
         return [inputImage CVCountFaces];
     }
     else {
-        return -1;
+        return inputImage;
     }
 }
 

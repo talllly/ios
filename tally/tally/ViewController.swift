@@ -20,6 +20,15 @@ UINavigationControllerDelegate, UIImagePickerControllerDelegate {
     
     var backCam: AVCaptureDevice?
     @IBOutlet var imageView: UIImageView!
+    @IBOutlet var recaptureButton: UIButton!
+    
+    @IBAction func recaptureButtonAction(sender: AnyObject) {
+        setupImagePicker()
+        UIView.animateWithDuration(0.7, delay: 0, options: UIViewAnimationOptions.TransitionNone, animations: { () -> Void in
+            self.recaptureButton.transform = CGAffineTransformMakeTranslation(0, 200)
+            }) { (bool) -> Void in
+        }
+    }
     
     var loadedBefore = false
     
@@ -51,24 +60,27 @@ UINavigationControllerDelegate, UIImagePickerControllerDelegate {
             return;
         } else {
             loadedBefore = true
+            self.recaptureButton.layer.shadowColor = UIColor.grayColor().CGColor
+            self.recaptureButton.layer.shadowOffset = CGSizeMake(0, 1.0)
+            self.recaptureButton.layer.shadowOpacity = 1.0
+            self.recaptureButton.layer.shadowRadius = 8.0
+            self.recaptureButton.layer.cornerRadius = 5.0
+            recaptureButton.alpha = 0.0
+            
+            self.recaptureButton.transform = CGAffineTransformMakeTranslation(0, 200)
         }
         
-        imagePickerController = UIImagePickerController()
-        
-        if let thisController = imagePickerController {
-            thisController.sourceType = .Camera
-            
-            thisController.mediaTypes = [kUTTypeImage as String]
-            
-            thisController.allowsEditing = true
-            thisController.delegate = self
-            presentViewController(thisController, animated: true, completion: nil)
-        }
+        setupImagePicker()
     }
     
     func imagePickerControllerDidCancel(picker: UIImagePickerController) {
         print("Picker was cancelled")
-        //picker.dismissViewControllerAnimated(true, completion: nil)
+        picker.dismissViewControllerAnimated(true, completion: nil)
+        recaptureButton.alpha = 1.0
+        UIView.animateWithDuration(0.7, delay: 0, options: UIViewAnimationOptions.TransitionNone, animations: { () -> Void in
+            self.recaptureButton.transform = CGAffineTransformMakeTranslation(0, 0)
+            }) { (bool) -> Void in
+        }
     }
     
     
@@ -93,8 +105,7 @@ UINavigationControllerDelegate, UIImagePickerControllerDelegate {
                         
                     else if stringType == kUTTypeImage as String{
                         let image = info[UIImagePickerControllerOriginalImage] as! UIImage
-                        
-                        let cvImage:UIImage = CVWrapper.processImageWithOpenCV(image)
+                        let cvImage = image
                         
                         print("Image = \(cvImage)")
                         imageView.image = cvImage
@@ -106,5 +117,24 @@ UINavigationControllerDelegate, UIImagePickerControllerDelegate {
             
                 picker.dismissViewControllerAnimated(true, completion: nil)
             }
+            recaptureButton.alpha = 1.0
+            UIView.animateWithDuration(0.7, delay: 0, options: UIViewAnimationOptions.TransitionNone, animations: { () -> Void in
+                self.recaptureButton.transform = CGAffineTransformMakeTranslation(0, 0)
+                }) { (bool) -> Void in
+            }
+    }
+    
+    func setupImagePicker() {
+        imagePickerController = UIImagePickerController()
+        
+        if let thisController = imagePickerController {
+            thisController.sourceType = .Camera
+            
+            thisController.mediaTypes = [kUTTypeImage as String]
+            
+            thisController.allowsEditing = true
+            thisController.delegate = self
+            presentViewController(thisController, animated: true, completion: nil)
+        }
     }
 }

@@ -15,10 +15,12 @@
 		B67CCA5A1BB7416900EE26DE /* CVWrapper.mm in Sources */ = {isa = PBXBuildFile; fileRef = B67CCA581BB7416900EE26DE /* CVWrapper.mm */; settings = {ASSET_TAGS = (); }; };
 		B67CCA631BB7611C00EE26DE /* opencv2.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = B67CCA621BB7611C00EE26DE /* opencv2.framework */; settings = {ASSET_TAGS = (); }; };
 		B67CCA651BB764CD00EE26DE /* lbpcascade_frontalface.xml in Resources */ = {isa = PBXBuildFile; fileRef = B67CCA641BB764CD00EE26DE /* lbpcascade_frontalface.xml */; settings = {ASSET_TAGS = (); }; };
+		B67CCA671BB7975600EE26DE /* haarcascade_frontalface_alt.xml in Resources */ = {isa = PBXBuildFile; fileRef = B67CCA661BB7975600EE26DE /* haarcascade_frontalface_alt.xml */; settings = {ASSET_TAGS = (); }; };
 		B68B712D1BB642EC008192E1 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = B68B712C1BB642EC008192E1 /* AppDelegate.swift */; };
 		B68B71321BB642EC008192E1 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = B68B71301BB642EC008192E1 /* Main.storyboard */; };
 		B68B71341BB642EC008192E1 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = B68B71331BB642EC008192E1 /* Assets.xcassets */; };
 		B68B71371BB642EC008192E1 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = B68B71351BB642EC008192E1 /* LaunchScreen.storyboard */; };
+		B6F9C9081BB79DCB00B53771 /* haarcascade_frontalface_alt2.xml in Resources */ = {isa = PBXBuildFile; fileRef = B6F9C9071BB79DCB00B53771 /* haarcascade_frontalface_alt2.xml */; settings = {ASSET_TAGS = (); }; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -35,12 +37,14 @@
 		B67CCA591BB7416900EE26DE /* SwiftStitch-Bridging-Header.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "SwiftStitch-Bridging-Header.h"; sourceTree = "<group>"; };
 		B67CCA621BB7611C00EE26DE /* opencv2.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = opencv2.framework; sourceTree = "<group>"; };
 		B67CCA641BB764CD00EE26DE /* lbpcascade_frontalface.xml */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.xml; path = lbpcascade_frontalface.xml; sourceTree = "<group>"; };
+		B67CCA661BB7975600EE26DE /* haarcascade_frontalface_alt.xml */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.xml; path = haarcascade_frontalface_alt.xml; sourceTree = "<group>"; };
 		B68B71291BB642EC008192E1 /* tally.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = tally.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		B68B712C1BB642EC008192E1 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		B68B71311BB642EC008192E1 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
 		B68B71331BB642EC008192E1 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		B68B71361BB642EC008192E1 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		B68B71381BB642EC008192E1 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		B6F9C9071BB79DCB00B53771 /* haarcascade_frontalface_alt2.xml */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.xml; path = haarcascade_frontalface_alt2.xml; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -88,9 +92,11 @@
 		B68B712B1BB642EC008192E1 /* tally */ = {
 			isa = PBXGroup;
 			children = (
+				B67CCA661BB7975600EE26DE /* haarcascade_frontalface_alt.xml */,
 				18F5F5981BB6DFD800BA0A5F /* ViewController.swift */,
 				B67CCA561BB7411400EE26DE /* UIImage+OpenCV.h */,
 				B67CCA541BB7410C00EE26DE /* UIImage+OpenCV.mm */,
+				B6F9C9071BB79DCB00B53771 /* haarcascade_frontalface_alt2.xml */,
 				B67CCA571BB7416900EE26DE /* CVWrapper.h */,
 				B67CCA581BB7416900EE26DE /* CVWrapper.mm */,
 				B67CCA591BB7416900EE26DE /* SwiftStitch-Bridging-Header.h */,
@@ -165,9 +171,11 @@
 			buildActionMask = 2147483647;
 			files = (
 				B68B71371BB642EC008192E1 /* LaunchScreen.storyboard in Resources */,
+				B6F9C9081BB79DCB00B53771 /* haarcascade_frontalface_alt2.xml in Resources */,
 				B68B71341BB642EC008192E1 /* Assets.xcassets in Resources */,
 				B68B71321BB642EC008192E1 /* Main.storyboard in Resources */,
 				18F5F5191BB6A5D400BA0A5F /* sample.jpg in Resources */,
+				B67CCA671BB7975600EE26DE /* haarcascade_frontalface_alt.xml in Resources */,
 				B67CCA651BB764CD00EE26DE /* lbpcascade_frontalface.xml in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

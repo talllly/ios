@@ -34,9 +34,27 @@
                                     </mask>
                                 </variation>
                             </imageView>
+                            <button opaque="NO" alpha="0.0" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="FLc-0S-edb">
+                                <rect key="frame" x="249" y="496" width="102" height="49"/>
+                                <color key="backgroundColor" red="0.0" green="0.47843137250000001" blue="1" alpha="1" colorSpace="calibratedRGB"/>
+                                <constraints>
+                                    <constraint firstAttribute="width" secondItem="FLc-0S-edb" secondAttribute="height" multiplier="102:49" id="993-nG-ocP"/>
+                                    <constraint firstAttribute="width" constant="102" id="RNW-Ts-CLv"/>
+                                </constraints>
+                                <fontDescription key="fontDescription" type="system" pointSize="22"/>
+                                <state key="normal" title="Recapture">
+                                    <color key="titleColor" red="0.93725490199999995" green="0.93725490199999995" blue="0.95686274510000002" alpha="1" colorSpace="calibratedRGB"/>
+                                </state>
+                                <connections>
+                                    <action selector="recaptureButtonAction:" destination="BYZ-38-t0r" eventType="touchUpInside" id="hoG-xl-iCN"/>
+                                </connections>
+                            </button>
                         </subviews>
                         <color key="backgroundColor" red="0.8901960784313725" green="0.8901960784313725" blue="0.8901960784313725" alpha="1" colorSpace="calibratedRGB"/>
                         <constraints>
+                            <constraint firstItem="FLc-0S-edb" firstAttribute="top" secondItem="LJZ-O1-Wth" secondAttribute="bottom" constant="44" id="3MT-DR-eT4"/>
+                            <constraint firstItem="FLc-0S-edb" firstAttribute="centerX" secondItem="LJZ-O1-Wth" secondAttribute="centerX" id="4E3-Hy-OwL"/>
+                            <constraint firstItem="wfy-db-euE" firstAttribute="top" secondItem="FLc-0S-edb" secondAttribute="bottom" constant="55" id="Eio-mj-5Js"/>
                             <constraint firstAttribute="trailingMargin" secondItem="LJZ-O1-Wth" secondAttribute="trailing" constant="-5" id="ZA2-vK-G8n"/>
                             <constraint firstItem="LJZ-O1-Wth" firstAttribute="centerX" secondItem="8bC-Xf-vdC" secondAttribute="centerX" id="lyb-ua-1Ib"/>
                             <constraint firstItem="LJZ-O1-Wth" firstAttribute="centerY" secondItem="8bC-Xf-vdC" secondAttribute="centerY" id="r8U-Us-mAr"/>
@@ -45,6 +63,7 @@
                     </view>
                     <connections>
                         <outlet property="imageView" destination="LJZ-O1-Wth" id="WoG-tO-a3M"/>
+                        <outlet property="recaptureButton" destination="FLc-0S-edb" id="zLF-9F-Aod"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="dkx-z0-nzr" sceneMemberID="firstResponder"/>
