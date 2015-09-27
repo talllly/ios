@@ -25,7 +25,7 @@
 - (cv::Mat)CVMat;
 - (cv::Mat)CVMat3;  // no alpha channel
 
-- (UIImage *) CVCountFaces;
+- (int) CVCountFaces;
 
 
 @end

@@ -12,13 +12,13 @@
 
 @implementation CVWrapper
 
-+ (UIImage *) howManyFaces: (UIImage*) inputImage
++ (int) howManyFaces: (UIImage*) inputImage
 {
     if ([inputImage isKindOfClass: [UIImage class]]) {
         return [inputImage CVCountFaces];
     }
     else {
-        return inputImage;
+        return 0;
     }
 }
 

@@ -16,16 +16,22 @@ UINavigationControllerDelegate, UIImagePickerControllerDelegate {
     let captureSession = AVCaptureSession()
     var previewLayer: AVCaptureVideoPreviewLayer?
     let screenWidth = UIScreen.mainScreen().bounds.size.width
+    var numFaces: Int = 0
     var CVImage: UIImage?
     
     var backCam: AVCaptureDevice?
     @IBOutlet var imageView: UIImageView!
     @IBOutlet var recaptureButton: UIButton!
+    @IBOutlet var numPeople: UITextField!
     
     @IBAction func recaptureButtonAction(sender: AnyObject) {
         setupImagePicker()
         UIView.animateWithDuration(0.7, delay: 0, options: UIViewAnimationOptions.TransitionNone, animations: { () -> Void in
             self.recaptureButton.transform = CGAffineTransformMakeTranslation(0, 200)
+            }) { (bool) -> Void in
+        }
+        UIView.animateWithDuration(0.7, delay: 0, options: UIViewAnimationOptions.TransitionNone, animations: { () -> Void in
+            self.numPeople.transform = CGAffineTransformMakeTranslation(0, -200)
             }) { (bool) -> Void in
         }
     }
@@ -67,7 +73,15 @@ UINavigationControllerDelegate, UIImagePickerControllerDelegate {
             self.recaptureButton.layer.cornerRadius = 5.0
             recaptureButton.alpha = 0.0
             
+            self.numPeople.layer.shadowColor = UIColor.grayColor().CGColor
+            self.numPeople.layer.shadowOffset = CGSizeMake(0, 1.0)
+            self.numPeople.layer.shadowOpacity = 1.0
+            self.numPeople.layer.shadowRadius = 10.0
+            self.numPeople.layer.cornerRadius = 5.0
+            numPeople.alpha = 0.0
+            
             self.recaptureButton.transform = CGAffineTransformMakeTranslation(0, 200)
+            self.numPeople.transform = CGAffineTransformMakeTranslation(0, -200)
         }
         
         setupImagePicker()
@@ -81,6 +95,7 @@ UINavigationControllerDelegate, UIImagePickerControllerDelegate {
             self.recaptureButton.transform = CGAffineTransformMakeTranslation(0, 0)
             }) { (bool) -> Void in
         }
+        imageView.image = UIImage(named: "tally")
     }
     
     
@@ -110,6 +125,7 @@ UINavigationControllerDelegate, UIImagePickerControllerDelegate {
                         print("Image = \(cvImage)")
                         imageView.image = cvImage
                         let numFaces = CVWrapper.howManyFaces(image)
+                        numPeople.text = "\(numFaces) People"
                         print("THERE ARE: \(numFaces) faces")
                     }
                     
@@ -120,6 +136,12 @@ UINavigationControllerDelegate, UIImagePickerControllerDelegate {
             recaptureButton.alpha = 1.0
             UIView.animateWithDuration(0.7, delay: 0, options: UIViewAnimationOptions.TransitionNone, animations: { () -> Void in
                 self.recaptureButton.transform = CGAffineTransformMakeTranslation(0, 0)
+                }) { (bool) -> Void in
+            }
+            
+            numPeople.alpha = 1.0
+            UIView.animateWithDuration(0.7, delay: 0, options: UIViewAnimationOptions.TransitionNone, animations: { () -> Void in
+                self.numPeople.transform = CGAffineTransformMakeTranslation(0, 0)
                 }) { (bool) -> Void in
             }
     }

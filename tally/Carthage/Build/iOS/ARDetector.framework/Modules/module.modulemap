@@ -1,0 +1,6 @@
+framework module ARDetector {
+  umbrella header "ARDetector.h"
+
+  export *
+  module * { export * }
+}

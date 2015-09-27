@@ -26,20 +26,31 @@
                                     <constraint firstAttribute="width" secondItem="LJZ-O1-Wth" secondAttribute="height" multiplier="114:61" id="0KY-Qf-7fC"/>
                                     <constraint firstAttribute="width" secondItem="LJZ-O1-Wth" secondAttribute="height" multiplier="114:61" id="68v-Ax-G1X"/>
                                     <constraint firstAttribute="width" secondItem="LJZ-O1-Wth" secondAttribute="height" multiplier="114:61" id="T63-94-iO6"/>
+                                    <constraint firstAttribute="width" secondItem="LJZ-O1-Wth" secondAttribute="height" multiplier="114:61" id="yJR-po-BYI"/>
                                 </constraints>
                                 <variation key="default">
                                     <mask key="constraints">
                                         <exclude reference="0KY-Qf-7fC"/>
+                                        <exclude reference="68v-Ax-G1X"/>
                                         <exclude reference="T63-94-iO6"/>
                                     </mask>
                                 </variation>
                             </imageView>
-                            <button opaque="NO" alpha="0.0" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="FLc-0S-edb">
-                                <rect key="frame" x="249" y="496" width="102" height="49"/>
+                            <textField opaque="NO" clipsSubviews="YES" alpha="0.0" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" textAlignment="center" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="y9W-GO-joK">
+                                <rect key="frame" x="150" y="70" width="300" height="30"/>
+                                <color key="backgroundColor" red="0.082352941176470587" green="0.062745098039215685" blue="0.46666666666666667" alpha="1" colorSpace="calibratedRGB"/>
+                                <constraints>
+                                    <constraint firstAttribute="width" constant="300" id="gaW-hu-LAI"/>
+                                </constraints>
+                                <color key="textColor" red="0.93725490199999995" green="0.93725490199999995" blue="0.95686274510000002" alpha="1" colorSpace="calibratedRGB"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="22"/>
+                                <textInputTraits key="textInputTraits"/>
+                            </textField>
+                            <button opaque="NO" alpha="0.0" contentMode="scaleToFill" misplaced="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="FLc-0S-edb">
+                                <rect key="frame" x="175" y="489" width="250" height="50"/>
                                 <color key="backgroundColor" red="0.0" green="0.47843137250000001" blue="1" alpha="1" colorSpace="calibratedRGB"/>
                                 <constraints>
-                                    <constraint firstAttribute="width" secondItem="FLc-0S-edb" secondAttribute="height" multiplier="102:49" id="993-nG-ocP"/>
-                                    <constraint firstAttribute="width" constant="102" id="RNW-Ts-CLv"/>
+                                    <constraint firstAttribute="width" constant="250" id="IX1-pv-KLt"/>
                                 </constraints>
                                 <fontDescription key="fontDescription" type="system" pointSize="22"/>
                                 <state key="normal" title="Recapture">
@@ -52,17 +63,29 @@
                         </subviews>
                         <color key="backgroundColor" red="0.8901960784313725" green="0.8901960784313725" blue="0.8901960784313725" alpha="1" colorSpace="calibratedRGB"/>
                         <constraints>
-                            <constraint firstItem="FLc-0S-edb" firstAttribute="top" secondItem="LJZ-O1-Wth" secondAttribute="bottom" constant="44" id="3MT-DR-eT4"/>
-                            <constraint firstItem="FLc-0S-edb" firstAttribute="centerX" secondItem="LJZ-O1-Wth" secondAttribute="centerX" id="4E3-Hy-OwL"/>
-                            <constraint firstItem="wfy-db-euE" firstAttribute="top" secondItem="FLc-0S-edb" secondAttribute="bottom" constant="55" id="Eio-mj-5Js"/>
+                            <constraint firstItem="LJZ-O1-Wth" firstAttribute="top" secondItem="y9W-GO-joK" secondAttribute="bottom" constant="47" id="Prl-es-hs1"/>
+                            <constraint firstItem="FLc-0S-edb" firstAttribute="centerX" secondItem="LJZ-O1-Wth" secondAttribute="centerX" id="XIS-qf-qWm"/>
                             <constraint firstAttribute="trailingMargin" secondItem="LJZ-O1-Wth" secondAttribute="trailing" constant="-5" id="ZA2-vK-G8n"/>
+                            <constraint firstItem="FLc-0S-edb" firstAttribute="top" secondItem="LJZ-O1-Wth" secondAttribute="bottom" constant="37" id="ZvR-8n-h7t"/>
+                            <constraint firstItem="wfy-db-euE" firstAttribute="top" secondItem="FLc-0S-edb" secondAttribute="bottom" constant="61" id="eDl-jW-IVH"/>
+                            <constraint firstItem="y9W-GO-joK" firstAttribute="centerX" secondItem="LJZ-O1-Wth" secondAttribute="centerX" id="f6x-aZ-4d0"/>
+                            <constraint firstAttribute="trailingMargin" secondItem="LJZ-O1-Wth" secondAttribute="trailing" constant="-5" id="hDB-Nv-FFH"/>
                             <constraint firstItem="LJZ-O1-Wth" firstAttribute="centerX" secondItem="8bC-Xf-vdC" secondAttribute="centerX" id="lyb-ua-1Ib"/>
+                            <constraint firstItem="LJZ-O1-Wth" firstAttribute="leading" secondItem="8bC-Xf-vdC" secondAttribute="leadingMargin" constant="-5" id="mux-fC-3vo"/>
                             <constraint firstItem="LJZ-O1-Wth" firstAttribute="centerY" secondItem="8bC-Xf-vdC" secondAttribute="centerY" id="r8U-Us-mAr"/>
                             <constraint firstItem="LJZ-O1-Wth" firstAttribute="leading" secondItem="8bC-Xf-vdC" secondAttribute="leadingMargin" constant="-5" id="sdY-bU-g3E"/>
                         </constraints>
+                        <variation key="default">
+                            <mask key="constraints">
+                                <exclude reference="ZA2-vK-G8n"/>
+                                <exclude reference="sdY-bU-g3E"/>
+                                <exclude reference="eDl-jW-IVH"/>
+                            </mask>
+                        </variation>
                     </view>
                     <connections>
                         <outlet property="imageView" destination="LJZ-O1-Wth" id="WoG-tO-a3M"/>
+                        <outlet property="numPeople" destination="y9W-GO-joK" id="uhh-UJ-i4Z"/>
                         <outlet property="recaptureButton" destination="FLc-0S-edb" id="zLF-9F-Aod"/>
                     </connections>
                 </viewController>

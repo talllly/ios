@@ -53,7 +53,7 @@
 
 }
 
--(UIImage *)CVCountFaces
+-(int)CVCountFaces
 {
     
     //Location of the classifiers of faces
@@ -66,16 +66,16 @@
     if(frame.empty())
     {
         std::cerr << "Could not load image" << std::endl;
-        return self;
+        return -1;
     }
     
     //Load the classifiers
     
-    NSURL *filepath = [[NSBundle mainBundle] URLForResource:@"haarcascade_frontalface_alt2" withExtension:@"xml"];
+    NSURL *filepath = [[NSBundle mainBundle] URLForResource:@"lbpcascade_frontalface" withExtension:@"xml"];
     if (!faceCascade.load( std::string([filepath fileSystemRepresentation]) ))
     {
         std::cerr << "Could not load face classifier" << std::endl;
-        return self;
+        return -1;
     }
     
     
@@ -88,7 +88,7 @@
     cv::equalizeHist( frameGray, frameGray );
     
     //Detect the face
-    faceCascade.detectMultiScale( frameGray, faces, 1.1, 2, 0, cv::Size(20,20), cv::Size(1000,1000));
+    faceCascade.detectMultiScale( frameGray, faces, 1.1, 2, 0, cv::Size(80, 80));
     
 //    //Draw circles around each face
 //    for( int i = 0; i < faces.size(); i++ )
@@ -97,7 +97,7 @@
 //        ellipse( image, center, Size( faces[i].width*0.5, faces[i].height*0.5), 0, 0, 360, Scalar( 255, 0, 255 ), 4, 8, 0 );
 //    }
     std::cerr << "I found " << faces.size() << " faces." << std::endl;
-    return self;
+    return faces.size();
 }
 
 + (UIImage *)imageWithCVMat:(const cv::Mat&)cvMat

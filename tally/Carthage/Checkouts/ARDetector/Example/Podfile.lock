@@ -1,0 +1,14 @@
+PODS:
+  - ARDetector (0.1.2)
+
+DEPENDENCIES:
+  - ARDetector (from `../`)
+
+EXTERNAL SOURCES:
+  ARDetector:
+    :path: "../"
+
+SPEC CHECKSUMS:
+  ARDetector: 985b10d91d5be44c54569c2887c001dc26c5f6c6
+
+COCOAPODS: 0.38.2
