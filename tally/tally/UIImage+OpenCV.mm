@@ -63,7 +63,9 @@
     cv::CascadeClassifier faceCascade;
     
     //Load the classifiers
-    if (!faceCascade.load( faceCascadeName ))
+    
+    NSURL *filepath = [[NSBundle mainBundle] URLForResource:@"lbpcascade_frontalface" withExtension:@"xml"];
+    if (!faceCascade.load( std::string([filepath fileSystemRepresentation]) ))
     {
         std::cerr << "Could not load face classifier" << std::endl;
         return -1;
